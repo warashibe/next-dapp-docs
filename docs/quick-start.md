@@ -341,6 +341,25 @@ export default bind(
 )
 ```
 
+### With TypeScript
+There is currently no type definition file (.d.ts) for the next-dapps specific API, 
+but If you want to develop with TypeScript, run
+
+```yarn add --dev typescript @types/react ```
+
+and then add the following to tsconfig.js:
+```
+{
+  ...,
+  "compilerOptions":{
+    ...
+    "baseUrl":"./"
+    ...
+  },
+  ...
+}
+```
+
 ## Plugins
 
 nDapps get better with a wide range of plugins such as Firestore database, user management, web3 / blockchain integration, CMS with a developer friendly editor and so forth.
