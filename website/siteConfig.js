@@ -9,7 +9,7 @@ const siteConfig = {
 
   headerLinks: [
     { doc: "quick-start", label: "Tutorial" },
-    { doc: "api", label: "API" }
+    { doc: "bind", label: "API" }
   ],
 
   headerIcon: "img/favicon.ico",

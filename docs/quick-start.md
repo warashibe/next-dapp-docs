@@ -201,19 +201,19 @@ export default bind(
 )
 ```
 
-### Computed states
+### Computed Values
 
-You can also bind computed states which are basically [recoil selectors](https://recoiljs.org/docs/basic-tutorial/selectors) and based upon multiple global states.
+You can also bind computed values which are basically [recoil selectors](https://recoiljs.org/docs/basic-tutorial/selectors) and based upon multiple global states.
 
 Pass a `key : value` object with a `get` function inside the `value` as shown below.
 
-`bind` will figure out it's a computed state.
+`bind` will figure out it's a computed values.
 
 Thes states used to compute the value has to be passed to the component as well. In the example below, `sum` uses `count1` and `count2` so both values are bound to the component. `get(count1)` returns the current value of `count1` inside the compute function. See the [recoil docs](https://recoiljs.org/docs/basic-tutorial/selectors) for details.
 
 In the example, `sum` reactively cumputes the sum of `count1` and `count2` as soon as any of them changes.
 
-If you install `react@expoerimental` and `react-dom@experimental`, you can even use `async` function to compute the value with [React Concurrent Mode](https://reactjs.org/docs/concurrent-mode-intro.html) (Suspense), which is not officially out to the stable version yet.
+If you install `react@expoerimental` and `react-dom@experimental`, you can even use `async` functions to compute the value with [React Concurrent Mode](https://reactjs.org/docs/concurrent-mode-intro.html) (Suspense), which is not officially out to the stable version yet.
 
 
 ```javascript
@@ -256,7 +256,7 @@ export default bind(
 )
 ```
 
-You can mix as many `states`, `functions`, `predefined state names`, `predefined function names` and "selectors (computed states)" as you like in any caotic order as the second argument.
+You can mix as many `states`, `functions`, `predefined state names`, `predefined function names` and "selectors (computed values)" as you like in any caotic order as the second argument.
 
 `bind( Component, [ states, functions, selectors ] )`
 
@@ -288,7 +288,7 @@ type `any`: the function executes when **any** one of the specified states chang
 
 The function defined as `func` is the same as custome functions explained above. You can change any global states using `set`. The function can be `async` and you can change any global states even if they are not bound to the component.
 
-Only the states specified in the `props` array will be passed to the functions as `props`. You may need different states than `watch` in the function `props`.
+Only the states specified in the `props` array will be passed to the functions as `props`. You may need different states in `watch` and `props`.
 
 ```javascript
 import { bind, Tracker } from "nd"
@@ -341,75 +341,9 @@ export default bind(
 )
 ```
 
-### global object
-
-There is a handy `global` object shared with every `bind` Component and function. The `global` object is not reactive but can be used to pass Class instances and large objects with circular structures. Changing `global` values won't trigger rendering of any components. `React` doesn't have a handy `global` object like this, but you don't want to expose anything to `window` object as it is accessible from the developer console. `global` is an internal object only shared with `Components` and `functions`.
-
-```javascript
-import { useEffect } from "react"
-import { bind } from "nd"
-
-const Count = bind(({ updated, set, init, global, conf }) => (
-  <div>{global.count}</div>
-))
-
-export default bind(
-  ({ set, init, global, conf }) => {
-    useEffect(() => {
-      global.count = 10
-    }, [])
-    return <Count />
-  },
-  [
-    {
-      log: ({ global, set, props, conf }) => {
-        console.log(global.count)
-      }
-    }
-  ]
-)
-```
-
-### conf.js / conf.local.js
-Just like `global`, configurations defined in `/nd/conf.js` or `/nd/conf.local.js` will be passed internally. See how they are passed everywhere in the example above.
-
-```javascript
-import { mergeAll } from "ramda"
-let local = {}
-
-try {
-  local = require("nd/conf.local")
-} catch (e) {}
-
-const prod = {
-  id: "next-dapp",
-  html: {
-    title: "Next Dapp | The Bridge between Web 2.0 and 3.0",
-    description:
-      "Next Dapp is a web framework to progressively connect web 2.0 with 3.0.",
-    image: "https://picsum.photos/1000/500",
-    "theme-color": "#03414D"
-  }
-}
-module.exports = mergeAll([prod, local])
-```
-
-### .env
-
-Use `/.env` to define credentials which shouldn't be exposed in the client app. Don't write these credentials in `/nd/conf.js` or `/nd/conf.local.js`. The data in these files will be inlined and exposed in the production app. In `Next.js` apps, there are places only executed on the server side, where you can use credentials without exposing them such as `/pages/api/*`, `getStaticProps`, `getStaticPaths` and `getServerSideProps`.
-
-```text
-SECRET=xxx
-SECRET2=xxx
-```
-
-You can access these values as `procces.env.SECRET` and `process.env.SECRET2`.
-
 ## Plugins
 
 nDapps get better with a wide range of plugins such as Firestore database, user management, web3 / blockchain integration, CMS with a developer friendly editor and so forth.
-
-Plugin tutorials are coming soon.
 
 ---
 
