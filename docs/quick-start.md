@@ -406,7 +406,12 @@ SECRET2=xxx
 You can access these values as `procces.env.SECRET` and `process.env.SECRET2`.
 
 ### With TypeScript
-There is currently no type definition file (.d.ts) for the next-dapps specific API, but If you want to develop with TypeScript, add the following to tsconfig.js:
+There is currently no type definition file (.d.ts) for the next-dapps specific API, 
+but If you want to develop with TypeScript, run
+
+```yarn add --dev typescript @types/react ```
+
+and then add the following to tsconfig.js:
 ```
 {
   ...,
