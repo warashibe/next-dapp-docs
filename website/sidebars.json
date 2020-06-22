@@ -1,6 +1,6 @@
 {
   "docs": {
-    "Tutorial": ["quick-start", "todo-app"]
+    "Tutorial": ["quick-start", "todo-app","how-to-contribute"]
   },
   "api": {
     "Core": ["api"]
