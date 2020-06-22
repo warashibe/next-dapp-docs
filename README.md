@@ -52,7 +52,7 @@ Coming Soon...
 
 ```
 
-Then Add the doc `id` to [/website/sidebars.json](https://github.com/warashibe/next-dapp-docs/blob/master/website/sidebars.json) in a desired place to include a link the sidebar. You need to restart the local app to reflext the `sidebar.json` changes.
+Then Add the doc `id` to [/website/sidebars.json](https://github.com/warashibe/next-dapp-docs/blob/master/website/sidebars.json) in a desired place to include a link in the sidebar. You need to restart the local app to reflext the `sidebar.json` changes.
 
 `[Cntr] + C` to kill the app and `yarn start` to restart the local server.
 
