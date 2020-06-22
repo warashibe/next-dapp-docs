@@ -1,0 +1,8 @@
+{
+  "docs": {
+    "Tutorial": ["quick-start", "todo-app"]
+  },
+  "api": {
+    "Core": ["api"]
+  }
+}
