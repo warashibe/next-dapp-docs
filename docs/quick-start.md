@@ -342,12 +342,12 @@ export default bind(
 ```
 
 ### With TypeScript
-There is currently no type definition file (.d.ts) for the next-dapps specific API, 
+There is currently no type definition file (.d.ts) for next-dapp specific API, 
 but If you want to develop with TypeScript, run
 
 ```yarn add --dev typescript @types/react ```
 
-and then add the following to tsconfig.js:
+and then add the following to tsconfig.json:
 ```
 {
   ...,
