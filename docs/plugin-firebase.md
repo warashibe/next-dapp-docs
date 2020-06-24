@@ -11,6 +11,13 @@ sidebar_label: firebase
 ```javascript
 nextdapp add firebase
 ```
+
+`firebase` plugin requires `firebase` node package to be installed to the main app.
+
+```
+yarn add firebase
+```
+
 ## conf.js / conf.local.js
 
 The configurations to pass to `firebase.initializeApp()` are required. You can get these values from [**Firebase Console**](https://console.firebase.google.com) once you set up a Firebase project.

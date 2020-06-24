@@ -9,6 +9,13 @@ sidebar_label: nextdapp
 ```
 yarn global add nextdapp
 ```
+
+To use plugins, you also need the `bit-bin` node package to be installed globally.
+
+```
+yarn global add bit-bin
+```
+
 ---
 
 ## Create a Project
