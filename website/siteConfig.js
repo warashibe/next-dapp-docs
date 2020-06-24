@@ -1,6 +1,6 @@
 const siteConfig = {
-  title: "Next Dapp",
-  tagline: "A Dapp Development Kit",
+  title: "Next Dapp Alpha",
+  tagline: "Next.js + Recoil + Firebase + Web3",
   url: "https://warashibe.github.io/next-dapp/",
   baseUrl: "/next-dapp/",
 
@@ -19,7 +19,7 @@ const siteConfig = {
 
   colors: {
     primaryColor: "#03414D",
-    secondaryColor: "#A0F6D2"
+    secondaryColor: "#00AC95"
   },
 
   copyright: `Copyright © ${new Date().getFullYear()} Warashibe, Inc.`,
