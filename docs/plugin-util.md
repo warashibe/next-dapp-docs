@@ -20,6 +20,7 @@ represents the current url with [Node.js URL object](https://nodejs.org/api/url.
 
 ## Global Functions
 
+
 ### `getURL()`
 
 gets the current page URL, parses it with [Node.js URL object](https://nodejs.org/api/url.html) and sets it to `url`.
