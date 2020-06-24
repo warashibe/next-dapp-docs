@@ -8,6 +8,21 @@ In nDapps, everything, even the core module, is a plugin. Plugins are drop-in en
 
 ---
 
+## Install `bit-bin`
+
+To use plugins, you also need the `bit-bin` node package to be installed globally.
+
+```bash
+yarn global add bit-bin
+```
+
+or
+
+```bash
+npm i bit-bin -g
+```
+
+
 ## Adding Plugins
 
 `nextdapp add [plugin_name]`

@@ -47,6 +47,22 @@ export default bind(
 )
 ```
 
+You can also set an initial value on the fly. It doesn't work if the initial value is a function or an array whose first member is a function. They are recognized as "Global Functions".
+
+```javascript
+import { bind } from "nd"
+
+export default bind(
+  ({ set, count }) => (
+    <div
+      onClick={() => set(count + 1, "count")}
+    >
+      add count: count
+    </div>
+  ),
+  [{ "count" : 10 }]
+)
+
 ### Predefine global states
 
 Global states can be predefined and initialized in `/nd/init.js`.

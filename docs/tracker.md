@@ -30,7 +30,7 @@ type `any`: the function executes when **any** one of the specified states chang
 
 The function defined as `func` is the same as custome functions explained above. You can change any global states using `set`. The function can be `async` and you can change any global states even if they are not bound to the component.
 
-Only the states specified in the `props` array will be passed to the functions as `props`. You may need different states in `watch` and `props`.
+Only the states specified in the `props` array will be passed to the functions as `props`. You may need different states in `watch` and `props`. If `props` is not specified, `props` inherits `watch` and returns the same global states.
 
 The example below watches `count1` and `count2` and whenever either of them changes, it executes a function to calculate the product.
 

@@ -21,6 +21,11 @@ Use `npm` or `yarn` to globally install Next Dapp CLI Tools.
 ```bash
 yarn global add nextdapp
 ```
+To use plugins, you also need the `bit-bin` node package to be installed globally.
+
+```bash
+yarn global add bit-bin
+```
 
 ### Create a Project
 
@@ -124,6 +129,23 @@ export default bind(
     </div>
   ),
   ["count"]
+)
+```
+
+You can also set an initial value on the fly. It doesn't work if the initial value is a function or an array whose first member is a function. They are recognized as "Global Functions".
+
+```javascript
+import { bind } from "nd"
+
+export default bind(
+  ({ set, count }) => (
+    <div
+      onClick={() => set(count + 1, "count")}
+    >
+      add count: count
+    </div>
+  ),
+  [{ "count" : 10 }]
 )
 ```
 
@@ -288,7 +310,7 @@ type `any`: the function executes when **any** one of the specified states chang
 
 The function defined as `func` is the same as custome functions explained above. You can change any global states using `set`. The function can be `async` and you can change any global states even if they are not bound to the component.
 
-Only the states specified in the `props` array will be passed to the functions as `props`. You may need different states in `watch` and `props`.
+Only the states specified in the `props` array will be passed to the functions as `props`. You may need different states in `watch` and `props`. If `props` is not specified, `props` inherits `watch` and returns the same global states.
 
 ```javascript
 import { bind, Tracker } from "nd"
