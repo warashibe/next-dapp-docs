@@ -5,6 +5,6 @@
   "api": {
     "CLI Tools": ["nextdapp-cli"],
     "Core": ["bind", "set", "global-states", "global-functions", "computed-values", "tracker", "global", "conf", "env"],
-    "Plugins": ["plugin-util", "plugin-firebase", "plugin-account", "plugin-web3", "plugin-wallet", "plugin-uniswap", "plugin-dev", "plugin-blog", "plugin-ipfs-blog"]
+    "Plugins": ["plugin-util", "plugin-firebase"]
   }
 }
