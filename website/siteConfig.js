@@ -2,7 +2,7 @@ const siteConfig = {
   title: "Next Dapp Alpha",
   tagline: "Next.js + Recoil + Firebase + Web3",
   url: "https://warashibe.github.io/next-dapp/",
-  baseUrl: "/next-dapp/",
+  baseUrl: "/",
 
   projectName: "next-dapp",
   organizationName: "warashibe",
