@@ -1,6 +1,6 @@
 {
   "docs": {
-    "Tutorial": ["quick-start", "todo-app","how-to-contribute"]
+    "Tutorial": ["quick-start", "plugins", "todo-app", "how-to-contribute"]
   },
   "api": {
     "CLI Tools": ["nextdapp-cli"],

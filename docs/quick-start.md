@@ -6,7 +6,7 @@ sidebar_label: Quick Start
 
 Next Dapp is just a [Next.js](https://nextjs.org) app, but on steroids with [recoil](https://recoiljs.org/) state management library.
 
-Reactive global state management is out of the box, which usually requires  heavry setups with external libraries such as `redux`, `rxjs`, `mobX` and related libraries.
+Reactive global state management is out of the box, which usually requires  heavy setups with external libraries such as `redux`, `rxjs`, `mobX` and related libraries.
 
 Next Dapp also is a plugin based system, which gives you a jump-start with your dapp development with one command integration with firestore dabase, user management, web3 / blockchain wallets, CMS / blog system and so many more.
 
