@@ -17,6 +17,7 @@ nextdapp add firebase
 
 ```
 yarn add firebase
+```
 
 ## conf.js / conf.local.js
 
