@@ -1,7 +1,7 @@
 ---
 id: plugin-account
-title: Account Plugin
-sidebar_label: Account
+title: account Plugin
+sidebar_label: account
 ---
 
 `account` enables simple user management based on [Firebase Authentication](https://firebase.google.com/docs/auth).
