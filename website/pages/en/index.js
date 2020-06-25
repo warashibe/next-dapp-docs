@@ -66,7 +66,7 @@ class HomeSplash extends React.Component {
           <ProjectTitle tagline={siteConfig.tagline} title={siteConfig.title} />
           <PromoSection>
             <Button href={docUrl("quick-start")}>Quick Start</Button>
-            <Button href={docUrl("nextdap-cli")}>API Reference</Button>
+            <Button href={docUrl("nextdapp-cli")}>API Reference</Button>
           </PromoSection>
         </div>
       </SplashContainer>
@@ -286,7 +286,7 @@ export default bind(
       {
         name: "Firebase",
         img: "firebase.png",
-        href: "https://firebase.gooble.com/"
+        href: "https://firebase.google.com/"
       },
       { name: "Ethereum", img: "ethereum.png", href: "https://ethereum.org/" },
       { name: "IPFS", img: "ipfs.png", href: "https://ipfs.io/" }

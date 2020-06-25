@@ -114,7 +114,8 @@ export default bind(
 ### Available
 
 * [**util**](/next-dapp/docs/plugin-util) - utilities
-* [**firebase**](/next-dapp/docs/firebase) - Firestore / Cloud Storage and more
+* [**firebase**](/next-dapp/docs/plugin-firebase) - Firestore / Cloud Storage and more
+* [**account**](/next-dapp/docs/plugin-account) - Firebase Authentication based user management
 
 ### Coming Soon
 * **account** - Firebase Authentication based user management
