@@ -9,6 +9,7 @@ const siteConfig = {
 
   headerLinks: [
     { doc: "quick-start", label: "Tutorial" },
+    { doc: "plugins", label: "Plugins" },
     { doc: "bind", label: "API" },
     { href: "https://github.com/warashibe/next-dapp", label: "Github" }
   ],

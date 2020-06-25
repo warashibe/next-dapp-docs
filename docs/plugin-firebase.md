@@ -8,14 +8,14 @@ sidebar_label: firebase
 
 ## Installation
 
-```javascript
+```bash
 nextdapp add firebase
 ```
 
 
 `firebase` plugin requires `firebase` node package to be installed to the main app.
 
-```
+```bash
 yarn add firebase
 ```
 
