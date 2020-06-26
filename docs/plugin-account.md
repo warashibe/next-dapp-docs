@@ -73,9 +73,9 @@ This will be set `true` once `user` status is checked by `watchUser()`. It will 
 
 ### `watchUser()`
 
-This function needs to be executed once and it will watch user status changes. If the user logs in, it sets `user` state, and if the user logs out it sets null to `user`. Before you can enable user management, `firebase` needs to be initialized. So usually the one liner
+This function needs to be executed once and it will watch user status changes. If the user logs in, it sets `user` state, and if the user logs out it sets null to `user`. `watchUser()` automatically initializes `firebase` along the way. The one liner
 
-`useEffect(() => initFB().then(() => watchUser()), [])`
+`useEffect(() => watchUser(), [])`
 
 works to initialize user management as shown below.
 
