@@ -12,7 +12,6 @@ sidebar_label: firebase
 nextdapp add firebase
 ```
 
-
 `firebase` plugin requires `firebase` node package to be installed to the main app.
 
 ```bash
