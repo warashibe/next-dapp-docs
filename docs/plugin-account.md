@@ -101,7 +101,7 @@ import { bind } from "nd"
 export default bind(
   ({ user, user_init, init }) => {
     const { initFB, watchUser, login, logout, deleteAccount } = init()
-    useEffect(() => initFB().then(() => watchUser()), [])
+    useEffect(() => watchUser(), [])
     return (
       <div>
         {user_init === false ? (
