@@ -1,18 +1,18 @@
 ---
-id: plugin-firebase
-title: firebase Plugin
-sidebar_label: firebase
+id: plugin-fb
+title: fb Plugin
+sidebar_label: fb
 ---
 
-`firebase` comes with simplified [**Firestore**](https://firebase.google.com/docs/firestore) APIs powerd by [**Firestore Sweet**](https://warashibe.github.io/firestore-sweet/) and direct access to [**Firebase Realtime Database**](https://firebase.google.com/docs/database), [**Clud Storage**](https://cloud.google.com/storage) and the original [**Firestore**](https://firebase.google.com/docs/firestore) APIs.
+`fb` comes with simplified [**Firestore**](https://firebase.google.com/docs/firestore) APIs powerd by [**Firestore Sweet**](https://warashibe.github.io/firestore-sweet/) and direct access to [**Firebase Realtime Database**](https://firebase.google.com/docs/database), [**Clud Storage**](https://cloud.google.com/storage) and the original [**Firestore**](https://firebase.google.com/docs/firestore) APIs.
 
 ## Installation
 
 ```bash
-nextdapp add firebase
+nextdapp add fb
 ```
 
-`firebase` plugin requires `firebase` node package to be installed to the main app.
+`fb` plugin requires `firebase` node package to be installed to the main app.
 
 ```bash
 yarn add firebase
@@ -24,7 +24,7 @@ The configurations to pass to `firebase.initializeApp()` are required. You can g
 
 ```javascript
   ...
-  firebase: {
+  fb: {
     name: "[project-name]",
     id: "[project-id]",
     key: "[firebase-api-key]",
@@ -106,7 +106,7 @@ export default bind(
 You can use `initFB` as a reqular function as well, but you need to pass `conf`. and in this way, `global` object won't get `fb` and `db`, so to access those you need to use `fb()` and `db()`.
 
 ```
-import { initFB, fb, db } from "nd/firebase"
+import { initFB, fb, db } from "nd/fb
 
 const func = () => {
   initFB().then((fb)=>{

@@ -13,16 +13,16 @@ nextdapp add account
 ```
 
 
-`account` plugin requires [util](/next-dapp/docs/plugin-util) and [firebase](/next-dapp/docs/plugin-firebase) plugins as well.
+`account` plugin requires [util](/next-dapp/docs/plugin-util) and [fb](/next-dapp/docs/plugin-fb) plugins as well.
 
 ```bash
 nextdapp add util
-nextdapp add firebase
+nextdapp add fb
 ```
 
 ## conf.js / conf.local.js
 
-The configurations for [firebase](/next-dapp/docs/plugin-firebase#confjs--conflocaljs) plugin are required.
+The configurations for [fb](/next-dapp/docs/plugin-fb#confjs--conflocaljs) plugin are required.
 
 ## Firestore Rules
 
