@@ -207,8 +207,7 @@ export default bind(
 			console.log(fromWei(await token.getBalance(web3_address)))
             const [err, res] = await token.transfer(
               your_address,
-              toWei("100")
-              {},
+              toWei("100"),
               hash => {
                 console.log(hash)
               }
