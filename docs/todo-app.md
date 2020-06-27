@@ -252,7 +252,7 @@ export const markDone = ({ props: { todos }, val: { todo }, set }) => {
 markDone.props = ["todos"]
 ```
 
-And reflext it in the `TodoUndone` component.
+And reflect it in the `TodoUndone` component.
 
 ```javascript
 const TodoUndone = bind(
