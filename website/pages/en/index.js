@@ -202,7 +202,7 @@ export default bind(
               style={{ padding: "20px" }}
               className="hljs"
               dangerouslySetInnerHTML={{
-                __html: hljs.highlight("bash", `nextdapp add firebase`).value
+                __html: hljs.highlight("bash", `nextdapp add fb`).value
               }}
             />
           </pre>

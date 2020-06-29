@@ -6,13 +6,13 @@ sidebar_label: nextdapp
 
 ## Installation
 
-```
+```bash
 yarn global add nextdapp
 ```
 
 To use plugins, you also need the `bit-bin` node package to be installed globally.
 
-```
+```bash
 yarn global add bit-bin
 ```
 
@@ -20,7 +20,7 @@ yarn global add bit-bin
 
 ## Create a Project
 
-```
+```bash
 nextdapp create myapp
 cd myapp
 yarn
@@ -31,13 +31,13 @@ yarn
 
 Plugins will be installed under `/nd/[plugin_name]`.
 
-```
+```bash
 nextdapp add util
 ```
 
 Plugins can be namespaced. `nextdapp add [plugin_name] [namespace]`
 
-```
+```bash
 nextdapp add util my_util
 ```
 
@@ -47,19 +47,19 @@ In this case, the `util` plugin will be installed at `/nd/my_util` and all the `
 
 ## Update Plugins
 
-```
+```bash
 nextdapp add util
 ```
 
 If you namespaced the plugin, you need to do the same when updating. Otherwise the plugin will be moved to a different location.
 
-```
+```bash
 nextdapp add util my_util
 ```
 
 You can simply change the location of the plugin by using a different namespace.
 
-```
+```bash
 nextdapp add util your_util
 ```
 
@@ -69,6 +69,14 @@ nextdapp add util your_util
 
 When removing you don't have to worry about namespaces, Next Dapp knows where the `util` plugin is located.
 
-```
+```bash
 nextdapp remove util
+```
+
+## Refresh Plugins
+
+Refresh plugin settings by reading the directory structure and configuration files `/nd/[plugin_name]/nextdapp.json` without installing anything. This is useful when developing your own plugin.
+
+```bash
+nextdapp refresh
 ```

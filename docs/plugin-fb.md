@@ -14,8 +14,10 @@ nextdapp add fb
 
 `fb` plugin requires `firebase` node package to be installed to the main app.
 
+You may also need to install `google-auth-library` for some dependency complications with `firebase`.
+
 ```bash
-yarn add firebase
+yarn add firebase google-auth-library
 ```
 
 ## conf.js / conf.local.js
