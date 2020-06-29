@@ -62,6 +62,7 @@ export default bind(
   ),
   [{ "count" : 10 }]
 )
+```
 
 ### Predefine global states
 

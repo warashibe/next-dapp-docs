@@ -71,19 +71,33 @@ This will be set `true` once `user` status is checked by `watchUser()`. It will 
 
 ## Global Functions
 
-### `watchUser()`
+### `watchUser({ nodb, cb })`
 
 This function needs to be executed once and it will watch user status changes. If the user logs in, it sets `user` state, and if the user logs out it sets null to `user`. `watchUser()` automatically initializes `firebase` along the way. The one liner
 
 `useEffect(() => watchUser(), [])`
 
-works to initialize user management as shown below.
+works to initialize user management as shown below. Pass `nodb = true` if you don't want to store user data to `Firestore`. You can also use `cb` argument to execute with the `user` object, every time user login state changes.
+
+```javascript
+useEffect(() => {
+  watchUser({ nodb: true, cb : (new_user) => {
+    console.log(new_user)
+  })
+}), [])
+```
 
 ### `login({ provider })`
 
 Login the user. Pass a provider to use. You need to setup each provider in [Firebase Console](https://console.firebase.google.com). The available providers are listed below.
 
-`provider` : `twitter`
+`provider` : `twitter`, `facebook`, `github`, `google`
+
+`login` returns the user object from Firebase Authentication when successful.
+
+```javascript
+const [err, new_user] = await login({ provider: 'twitter' })
+```
 
 ### `logout()`
 
