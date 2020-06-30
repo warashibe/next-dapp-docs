@@ -370,15 +370,15 @@ but If you want to develop with TypeScript, run
 ```yarn add --dev typescript @types/react ```
 
 and then add the following to tsconfig.json:
-```
+```json
 {
   ...,
   "compilerOptions":{
-    ...
-    "baseUrl":"./"
-    ...
+    ...,
+    "baseUrl":"./",
+    ...,
   },
-  ...
+  ...,
 }
 ```
 
