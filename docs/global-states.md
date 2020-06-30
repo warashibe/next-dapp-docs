@@ -57,7 +57,7 @@ export default bind(
     <div
       onClick={() => set(count + 1, "count")}
     >
-      add count: count
+      add count: {count}
     </div>
   ),
   [{ "count" : 10 }]
