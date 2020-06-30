@@ -4,7 +4,7 @@ title: fb Plugin
 sidebar_label: fb
 ---
 
-`fb` comes with simplified [**Firestore**](https://firebase.google.com/docs/firestore) APIs powerd by [**Firestore Sweet**](https://warashibe.github.io/firestore-sweet/) and direct access to [**Firebase Realtime Database**](https://firebase.google.com/docs/database), [**Clud Storage**](https://cloud.google.com/storage) and the original [**Firestore**](https://firebase.google.com/docs/firestore) APIs.
+`fb` comes with simplified [**Firestore**](https://firebase.google.com/docs/firestore) APIs powered by [**Firestore Sweet**](https://warashibe.github.io/firestore-sweet/) and direct access to [**Firebase Realtime Database**](https://firebase.google.com/docs/database), [**Clud Storage**](https://cloud.google.com/storage) and the original [**Firestore**](https://firebase.google.com/docs/firestore) APIs.
 
 ## Installation
 
