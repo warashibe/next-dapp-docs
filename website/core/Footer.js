@@ -34,6 +34,10 @@ class Footer extends React.Component {
       {
         login: "dmamira",
         avatar_url: "https://avatars1.githubusercontent.com/u/49590399?s=35"
+      },
+      {
+        login: "hoosan",
+        avatar_url: "https://avatars1.githubusercontent.com/u/40290137?s=35"
       }
     ]
     contributors.sort(() => Math.random() - 0.5)
