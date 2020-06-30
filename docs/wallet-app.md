@@ -10,10 +10,10 @@ Also connect Metamask to [Ropsten Testnet](https://ropsten.etherscan.io/) during
 
 ![](/next-dapp/img/wallet-app-4.png)
 
-## Install Nextdapp CLI Tools
+## Install Nextdapp CLI Tools Globally
 
 ```bash
-yarn add nextdapp bit-bin
+yarn global add nextdapp bit-bin
 ```
 
 ## Create an App, Install plugins and packages and Run Locally
