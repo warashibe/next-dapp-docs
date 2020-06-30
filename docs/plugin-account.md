@@ -87,7 +87,7 @@ useEffect(() => {
 }), [])
 ```
 
-### `login({ provider })`
+### `login({ provider, nodb })`
 
 Login the user. Pass a provider to use. You need to setup each provider in [Firebase Console](https://console.firebase.google.com). The available providers are listed below.
 
