@@ -437,4 +437,10 @@ export default bind(
 )
 ```
 
-> We didn't use the powerful `Tracker` and `Computed Values` in this tutorial. But Next Dapp has more tricks up it's sleeves. Check out the [Quick Start](/next-dapp/docs/quick-start) for what it's capable of.
+> We didn't use the powerful [**Tracker**](/next-dapp/docs/tracker) and [**Computed Values**](/next-dapp/docs/computed-values) in this tutorial. But Next Dapp has more tricks up it's sleeves. Check out the [Quick Start](/next-dapp/docs/quick-start) for what it's capable of.
+
+> Using [**Vercel Now**](https://vercel.com), you can deploy your app with one command.
+
+```bash
+now
+```

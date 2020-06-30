@@ -75,7 +75,7 @@ This will be set `true` once `user` status is checked by `watchUser()`. It will 
 
 This function needs to be executed once and it will watch user status changes. If the user logs in, it sets `user` state, and if the user logs out it sets null to `user`. `watchUser()` automatically initializes `firebase` along the way. The one liner
 
-`useEffect(() => watchUser(), [])`
+`useEffect(() => { watchUser() }, [])`
 
 works to initialize user management as shown below. Pass `nodb = true` if you don't want to store user data to `Firestore`. You can also use `cb` argument to execute with the `user` object, every time user login state changes.
 
@@ -115,7 +115,7 @@ import { bind } from "nd"
 export default bind(
   ({ user, user_init, init }) => {
     const { initFB, watchUser, login, logout, deleteAccount } = init()
-    useEffect(() => watchUser(), [])
+    useEffect(() => { watchUser() }, [])
     return (
       <div>
         {user_init === false ? (

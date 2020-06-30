@@ -92,7 +92,7 @@ The ETH balance of the currently selected `web3_address`.
 
 This function needs to be executed once to detect `web3.js` and connect with an ethereum wallet such as the [Metamask](https://metamask.io/) browser extension. You can just do this in a component.
 
-`useEffect(() => initWeb3(), [])`
+`useEffect(() => { initWeb3() }, [])`
 
 ### `erc20({ address, token })`
 
@@ -196,7 +196,7 @@ const your_address = "0x1234......"
 export default bind(
   ({ init, web3_init, web3_address }) => {
     const { initWeb3, erc20 } = init()
-    useEffect(() => initWeb3(), [])
+    useEffect(() => { initWeb3() }, [])
     return (
       <div
         onClick={async () => {
