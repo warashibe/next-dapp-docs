@@ -22,6 +22,26 @@ class Footer extends React.Component {
   }
 
   render() {
+    let contributors = [
+      {
+        login: "ocrybit",
+        avatar_url: "https://avatars3.githubusercontent.com/u/40726926?s=35"
+      },
+      {
+        login: "youxiberlin",
+        avatar_url: "https://avatars0.githubusercontent.com/u/7786031?s=35"
+      },
+      {
+        login: "dmamira",
+        avatar_url: "https://avatars1.githubusercontent.com/u/49590399?s=35"
+      },
+      {
+        login: "hoosan",
+        avatar_url: "https://avatars1.githubusercontent.com/u/40290137?s=35"
+      }
+    ]
+    contributors.sort(() => Math.random() - 0.5)
+
     return (
       <footer className="nav-footer" id="footer">
         <section className="sitemap">
@@ -37,10 +57,10 @@ class Footer extends React.Component {
           </a>
           <div>
             <h5>Docs</h5>
-            <a href={this.docUrl("quick-start", this.props.language)}>
-              Tutorial
-            </a>
-            <a href={this.docUrl("api", this.props.language)}>API Reference</a>
+            <a href={this.docUrl("quick-start")}>Quick Start</a>
+            <a href={this.docUrl("plugins")}>Plugins</a>
+            <a href={this.docUrl("todo-app")}>Todo App Example</a>
+            <a href={this.docUrl("nextdapp-cli")}>API Reference</a>
           </div>
           <div>
             <h5>Community</h5>
@@ -51,17 +71,32 @@ class Footer extends React.Component {
             >
               Twitter
             </a>
+            <h5 style={{ marginTop: "20px" }}>Contributors</h5>
+            {contributors.map(v => (
+              <a
+                style={{
+                  display: "inline-block",
+                  margin: "5px 7px"
+                }}
+                href={`https://github.com/${v.login}`}
+                target="_blank"
+                rel="noreferrer noopener"
+                title={v.login}
+              >
+                <img
+                  src={v.avatar_url}
+                  style={{ width: "35px", height: "35px", borderRadius: "50%" }}
+                />
+              </a>
+            ))}
           </div>
           <div>
             <h5>More</h5>
             <a href="https://blog.warashibe.market" target="_blank">
               Blog
             </a>
-            <a href="https://oss.warashibe.market" target="_blank">
-              OSS Lab
-            </a>
-            <a href="https://bit.dev/warashibe/nextdapp">Bit</a>
-            <a href="https://github.com/warashibe">GitHub</a>
+            <a href="https://bit.dev/warashibe/nextdapp">Bit Plugins</a>
+            <a href="https://github.com/warashibe/next-dapp">GitHub</a>
             <a
               className="github-button"
               href={this.props.config.repoUrl}

@@ -6,7 +6,7 @@ sidebar_label: Quick Start
 
 Next Dapp is just a [Next.js](https://nextjs.org) app, but on steroids with [recoil](https://recoiljs.org/) state management library.
 
-Reactive global state management is out of the box, which usually requires  heavry setups with external libraries such as `redux`, `rxjs`, `mobX` and related libraries.
+Reactive global state management is out of the box, which usually requires  heavy setups with external libraries such as `redux`, `rxjs`, `mobX` and related libraries.
 
 Next Dapp also is a plugin based system, which gives you a jump-start with your dapp development with one command integration with firestore dabase, user management, web3 / blockchain wallets, CMS / blog system and so many more.
 
@@ -20,6 +20,11 @@ Use `npm` or `yarn` to globally install Next Dapp CLI Tools.
 
 ```bash
 yarn global add nextdapp
+```
+To use plugins, you also need the `bit-bin` node package to be installed globally.
+
+```bash
+yarn global add bit-bin
 ```
 
 ### Create a Project
@@ -127,6 +132,23 @@ export default bind(
 )
 ```
 
+You can also set an initial value on the fly. It doesn't work if the initial value is a function or an array whose first member is a function. They are recognized as "Global Functions".
+
+```javascript
+import { bind } from "nd"
+
+export default bind(
+  ({ set, count }) => (
+    <div
+      onClick={() => set(count + 1, "count")}
+    >
+      add count: count
+    </div>
+  ),
+  [{ "count" : 10 }]
+)
+```
+
 ### Predefine global states
 
 Global states can be predefined and initialized in `/nd/init.js`.
@@ -209,7 +231,7 @@ Pass a `key : value` object with a `get` function inside the `value` as shown be
 
 `bind` will figure out it's a computed values.
 
-Thes states used to compute the value has to be passed to the component as well. In the example below, `sum` uses `count1` and `count2` so both values are bound to the component. `get(count1)` returns the current value of `count1` inside the compute function. See the [recoil docs](https://recoiljs.org/docs/basic-tutorial/selectors) for details.
+These states used to compute the value has to be passed to the component as well. In the example below, `sum` uses `count1` and `count2` so both values are bound to the component. `get(count1)` returns the current value of `count1` inside the compute function. See the [recoil docs](https://recoiljs.org/docs/basic-tutorial/selectors) for details.
 
 In the example, `sum` reactively cumputes the sum of `count1` and `count2` as soon as any of them changes.
 
@@ -288,7 +310,7 @@ type `any`: the function executes when **any** one of the specified states chang
 
 The function defined as `func` is the same as custome functions explained above. You can change any global states using `set`. The function can be `async` and you can change any global states even if they are not bound to the component.
 
-Only the states specified in the `props` array will be passed to the functions as `props`. You may need different states in `watch` and `props`.
+Only the states specified in the `props` array will be passed to the functions as `props`. You may need different states in `watch` and `props`. If `props` is not specified, `props` inherits `watch` and returns the same global states.
 
 ```javascript
 import { bind, Tracker } from "nd"

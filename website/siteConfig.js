@@ -1,7 +1,7 @@
 const siteConfig = {
-  title: "Next Dapp",
-  tagline: "A Dapp Development Kit",
-  url: "https://warashibe.github.io/next-dapp/",
+  title: "Next Dapp Alpha",
+  tagline: "Next.js + Recoil + Firebase + Web3",
+  url: "https://warashibe.github.io",
   baseUrl: "/next-dapp/",
 
   projectName: "next-dapp",
@@ -9,7 +9,9 @@ const siteConfig = {
 
   headerLinks: [
     { doc: "quick-start", label: "Tutorial" },
-    { doc: "bind", label: "API" }
+    { doc: "plugins", label: "Plugins" },
+    { doc: "bind", label: "API" },
+    { href: "https://github.com/warashibe/next-dapp", label: "Github" }
   ],
 
   headerIcon: "img/favicon.ico",
@@ -18,7 +20,7 @@ const siteConfig = {
 
   colors: {
     primaryColor: "#03414D",
-    secondaryColor: "#A0F6D2"
+    secondaryColor: "#00AC95"
   },
 
   copyright: `Copyright © ${new Date().getFullYear()} Warashibe, Inc.`,
@@ -33,8 +35,8 @@ const siteConfig = {
 
   cleanUrl: true,
 
-  ogImage: "img/undraw_online.svg",
-  twitterImage: "img/undraw_tweetstorm.svg",
+  ogImage: "img/next_dapp_logo_large.png",
+  twitterImage: "img/next_dapp_logo_large.png",
 
   repoUrl: "https://github.com/warashibe/next-dapp"
 }
