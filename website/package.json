@@ -12,6 +12,7 @@
     "docusaurus": "^1.14.4"
   },
   "dependencies": {
-    "highlight.js": "^10.1.1"
+    "highlight.js": "^10.1.1",
+    "rebass": "^4.0.7"
   }
 }
