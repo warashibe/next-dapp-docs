@@ -13,16 +13,16 @@ nextdapp add account
 ```
 
 
-`account` plugin requires [util](/next-dapp/docs/plugin-util) and [firebase](/next-dapp/docs/plugin-firebase) plugins as well.
+`account` plugin requires [util](/next-dapp/docs/plugin-util) and [fb](/next-dapp/docs/plugin-fb) plugins as well.
 
 ```bash
 nextdapp add util
-nextdapp add firebase
+nextdapp add fb
 ```
 
 ## conf.js / conf.local.js
 
-The configurations for [firebase](/next-dapp/docs/plugin-firebase#confjs--conflocaljs) plugin are required.
+The configurations for [fb](/next-dapp/docs/plugin-fb#confjs--conflocaljs) plugin are required.
 
 ## Firestore Rules
 
@@ -71,19 +71,33 @@ This will be set `true` once `user` status is checked by `watchUser()`. It will 
 
 ## Global Functions
 
-### `watchUser()`
+### `watchUser({ nodb, cb })`
 
-This function needs to be executed once and it will watch user status changes. If the user logs in, it sets `user` state, and if the user logs out it sets null to `user`. Before you can enable user management, `firebase` needs to be initialized. So usually the one liner
+This function needs to be executed once and it will watch user status changes. If the user logs in, it sets `user` state, and if the user logs out it sets null to `user`. `watchUser()` automatically initializes `firebase` along the way. The one liner
 
-`useEffect(() => initFB().then(() => watchUser()), [])`
+`useEffect(() => { watchUser() }, [])`
 
-works to initialize user management as shown below.
+works to initialize user management as shown below. Pass `nodb = true` if you don't want to store user data to `Firestore`. You can also use `cb` argument to execute with the `user` object, every time user login state changes.
 
-### `login({ provider })`
+```javascript
+useEffect(() => {
+  watchUser({ nodb: true, cb : (new_user) => {
+    console.log(new_user)
+  })
+}), [])
+```
+
+### `login({ provider, nodb })`
 
 Login the user. Pass a provider to use. You need to setup each provider in [Firebase Console](https://console.firebase.google.com). The available providers are listed below.
 
-`provider` : `twitter`
+`provider` : `twitter`, `facebook`, `github`, `google`
+
+`login` returns the user object from Firebase Authentication when successful.
+
+```javascript
+const [err, new_user] = await login({ provider: 'twitter' })
+```
 
 ### `logout()`
 
@@ -101,7 +115,7 @@ import { bind } from "nd"
 export default bind(
   ({ user, user_init, init }) => {
     const { initFB, watchUser, login, logout, deleteAccount } = init()
-    useEffect(() => initFB().then(() => watchUser()), [])
+    useEffect(() => { watchUser() }, [])
     return (
       <div>
         {user_init === false ? (

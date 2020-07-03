@@ -114,12 +114,12 @@ export default bind(
 ### Available
 
 * [**util**](/next-dapp/docs/plugin-util) - utilities
-* [**firebase**](/next-dapp/docs/plugin-firebase) - Firestore / Cloud Storage and more
+* [**fb**](/next-dapp/docs/plugin-fb) - Firestore / Cloud Storage and more
 * [**account**](/next-dapp/docs/plugin-account) - Firebase Authentication based user management
+* [**web3**](/next-dapp/docs/plugin-web3) - Web3.js Ethereum blockchain interactions
 
 ### Coming Soon
-* **account** - Firebase Authentication based user management
-* **web3** - Web3.js Ethereum blockchain interactions
+
 * **wallet** - Metamask / Authereum smart contract wallet and more
 * **uniswap** - DEX (Decentralized Exchange)
 * **dev** - Dev Protocol OSS ecosystem with staking

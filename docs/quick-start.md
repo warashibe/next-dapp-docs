@@ -231,7 +231,7 @@ Pass a `key : value` object with a `get` function inside the `value` as shown be
 
 `bind` will figure out it's a computed values.
 
-Thes states used to compute the value has to be passed to the component as well. In the example below, `sum` uses `count1` and `count2` so both values are bound to the component. `get(count1)` returns the current value of `count1` inside the compute function. See the [recoil docs](https://recoiljs.org/docs/basic-tutorial/selectors) for details.
+These states used to compute the value has to be passed to the component as well. In the example below, `sum` uses `count1` and `count2` so both values are bound to the component. `get(count1)` returns the current value of `count1` inside the compute function. See the [recoil docs](https://recoiljs.org/docs/basic-tutorial/selectors) for details.
 
 In the example, `sum` reactively cumputes the sum of `count1` and `count2` as soon as any of them changes.
 
@@ -370,15 +370,15 @@ but If you want to develop with TypeScript, run
 ```yarn add --dev typescript @types/react ```
 
 and then add the following to tsconfig.json:
-```
+```json
 {
   ...,
   "compilerOptions":{
-    ...
-    "baseUrl":"./"
-    ...
+    ...,
+    "baseUrl":"./",
+    ...,
   },
-  ...
+  ...,
 }
 ```
 

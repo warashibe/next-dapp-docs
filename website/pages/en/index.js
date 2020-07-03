@@ -153,7 +153,7 @@ class Index extends React.Component {
               style={{ padding: "20px" }}
               className="hljs"
               dangerouslySetInnerHTML={{
-                __html: hljs.highlight("bash", `nextdapp add firebase`).value
+                __html: hljs.highlight("bash", `nextdapp add fb`).value
               }}
             />
           </pre>
@@ -366,6 +366,7 @@ export default bind(
         </Box>
       </Flex>
     )
+
     return (
       <div>
         <HomeSplash siteConfig={siteConfig} language={language} />
