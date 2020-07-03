@@ -5,6 +5,7 @@ const CompLibrary = require("../../core/CompLibrary.js")
 const MarkdownBlock = CompLibrary.MarkdownBlock /* Used to read markdown */
 const Container = CompLibrary.Container
 const GridBlock = CompLibrary.GridBlock
+import { Button, Image, Box, Flex } from "rebass"
 const hljs = require("highlight.js")
 const code_1 = `import { bind } from "nd"
 export default bind(({ count }) => {
@@ -103,6 +104,24 @@ class Index extends React.Component {
           let developers save time and money to build the state of the art
           (d)apps.
         </MarkdownBlock>
+        <pre
+          style={{
+            margin: "10px 30px",
+            flex: 1,
+            display: "inline-block"
+          }}
+        >
+          <code
+            style={{ padding: "20px" }}
+            className="hljs"
+            dangerouslySetInnerHTML={{
+              __html: hljs.highlight(
+                "bash",
+                `nextdapp create myapp && cd myapp && yarn`
+              ).value
+            }}
+          />
+        </pre>
       </div>
     )
     const style = {
@@ -120,80 +139,12 @@ class Index extends React.Component {
           display: "flex",
           alignItems: "center",
           padding: "40px",
-          backgroundColor: "#ddd",
+          backgroundColor: "#f7f7f7",
           color: "#282A36",
           flexDirection: "column"
         }}
       >
         <div style={{ width: "100%", maxWidth: "700px" }}>
-          <div style={style.code_title}>Easy Setup</div>
-          <pre style={{ margin: "0 30px 30px 10px", flex: 1 }}>
-            <code
-              style={{ padding: "20px" }}
-              className="hljs"
-              dangerouslySetInnerHTML={{
-                __html: hljs.highlight(
-                  "bash",
-                  `nextdapp create myapp && cd myapp && yarn`
-                ).value
-              }}
-            />
-          </pre>
-          <div style={style.code_title}>Simply Bind Anything to Component</div>
-          <pre style={{ margin: "0 30px 30px 10px", flex: 1 }}>
-            <code
-              style={{ padding: "20px" }}
-              className="hljs"
-              dangerouslySetInnerHTML={{
-                __html: hljs.highlight(
-                  "javascript",
-                  `import { bind } from "nd"
-export default bind(
-  ({ global_state, global_state2, computed_value, init }) => {
-    const { global_function } = init()
-    return <div onClick={global_function}>execute</div>
-  },
-  [
-    "global_state",
-    "global_state2",
-    {
-      global_function: ({ set }) => {
-        set(3, "global_state")
-      },
-      computed_value: {
-        get: atoms => ({ get }) => {
-          return get(atoms.global_state)) + (get(atoms.global_state2)
-        }
-      }
-    }
-  ]
-)`
-                ).value
-              }}
-            />
-          </pre>
-          <div style={style.code_title}>
-            Reactive Functions with Tracker Component
-          </div>
-          <pre style={{ margin: "0 30px 30px 10px", flex: 1 }}>
-            <code
-              style={{ padding: "20px" }}
-              className="hljs"
-              dangerouslySetInnerHTML={{
-                __html: hljs.highlight(
-                  "javascript",
-                  `<Tracker
-  name="count_tracker"
-  watch={["count1", "count2"]}
-  func={({ set, props: { count1, count2 } }) => {
-    set(count1 * count2, "product")
-  }}
-  />`
-                ).value
-              }}
-            />
-          </pre>
-
           <div style={style.code_title}>
             Lightweight Plugin Management with Bit
           </div>
@@ -316,6 +267,103 @@ export default bind(
         </div>
       )
     }
+    const tracker_code = `<Tracker
+  name="state_tracker"
+  watch={["stateA", "stateB"]}
+  type="any"
+  func={({ set, props: { stateA, stateB } }) => {
+    set(stateA * stateB, "product")
+  }}
+  />`
+    const bind_code = `import { bind } from "nd"
+export default bind(
+  ({ global_state, global_state2, computed_value, init }) => {
+    const { global_function } = init()
+    return <div onClick={global_function}>execute</div>
+  },
+  [
+    "global_state",
+    "global_state2",
+    {
+      global_function: ({ set }) => {
+        set(3, "global_state")
+      },
+      computed_value: {
+        get: ({ global_state, global_state2 }) => ({ get }) => {
+          return get(global_state)) + get(global_state2)
+        }
+      }
+    }
+  ]
+)`
+    const Bind = () => (
+      <Flex
+        flexWrap="wrap"
+        width={1}
+        bg="#f7f7f7"
+        justifyContent="center"
+        alignItems="center"
+        p="50px 30px"
+      >
+        <Box width={[1, 1, 1 / 2]}>
+          <div style={{ ...style.code_title, textAlign: "center" }}>
+            Simply Bind Anything to Component
+          </div>
+          <pre
+            style={{
+              margin: "0 30px",
+              flex: 1,
+              textAlign: "left"
+            }}
+          >
+            <code
+              style={{ padding: "20px" }}
+              className="hljs"
+              dangerouslySetInnerHTML={{
+                __html: hljs.highlight("javascript", bind_code).value
+              }}
+            />
+          </pre>
+        </Box>
+        <Box width={[1, 1, 1 / 2]} p="20px">
+          <img src={`${baseUrl}img/diagram-1.png`} width="100%" />
+        </Box>
+      </Flex>
+    )
+    const Tracker = () => (
+      <Flex
+        flexWrap="wrap"
+        width={1}
+        bg="#fff"
+        justifyContent="center"
+        alignItems="center"
+        p="50px 30px"
+      >
+        <Box width={[1, 1, 1 / 2]} order={[2, 2, 1]} p="20px">
+          <img src={`${baseUrl}img/diagram-2.png`} width="100%" />
+        </Box>
+        <Box width={[1, 1, 1 / 2]} order={[1, 1, 2]}>
+          <div style={{ ...style.code_title, textAlign: "center" }}>
+            Reactive Functions with Tracker
+          </div>
+          <pre
+            style={{
+              margin: "0 30px",
+              flex: 1,
+              textAlign: "left"
+            }}
+          >
+            <code
+              style={{ padding: "20px" }}
+              className="hljs"
+              dangerouslySetInnerHTML={{
+                __html: hljs.highlight("javascript", tracker_code).value
+              }}
+            />
+          </pre>
+        </Box>
+      </Flex>
+    )
 
     return (
       <div>
@@ -323,6 +371,8 @@ export default bind(
         <div className="mainContainer">
           <Features />
           <FeatureCallout />
+          <Bind />
+          <Tracker />
           <LearnHow />
           <Showcase />
         </div>
