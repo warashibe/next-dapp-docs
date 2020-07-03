@@ -5,7 +5,7 @@ const CompLibrary = require("../../core/CompLibrary.js")
 const MarkdownBlock = CompLibrary.MarkdownBlock /* Used to read markdown */
 const Container = CompLibrary.Container
 const GridBlock = CompLibrary.GridBlock
-import { Button, Image, Box, Flex } from "rebass"
+const rebass = require("rebass")
 const hljs = require("highlight.js")
 const code_1 = `import { bind } from "nd"
 export default bind(({ count }) => {
@@ -296,6 +296,8 @@ export default bind(
     }
   ]
 )`
+    const Flex = rebass.Flex
+    const Box = rebass.Box
     const Bind = () => (
       <Flex
         flexWrap="wrap"
@@ -306,9 +308,9 @@ export default bind(
         p="50px 30px"
       >
         <Box width={[1, 1, 1 / 2]}>
-          <div style={{ ...style.code_title, textAlign: "center" }}>
+          <Box style={style.code_title} textAlign="center">
             Simply Bind Anything to Component
-          </div>
+          </Box>
           <pre
             style={{
               margin: "0 30px",
@@ -343,9 +345,9 @@ export default bind(
           <img src={`${baseUrl}img/diagram-2.png`} width="100%" />
         </Box>
         <Box width={[1, 1, 1 / 2]} order={[1, 1, 2]}>
-          <div style={{ ...style.code_title, textAlign: "center" }}>
+          <Box style={style.code_title} textAlign="center">
             Reactive Functions with Tracker
-          </div>
+          </Box>
           <pre
             style={{
               margin: "0 30px",
@@ -364,7 +366,6 @@ export default bind(
         </Box>
       </Flex>
     )
-
     return (
       <div>
         <HomeSplash siteConfig={siteConfig} language={language} />
