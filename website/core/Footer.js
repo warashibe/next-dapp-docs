@@ -65,11 +65,11 @@ class Footer extends React.Component {
           <div>
             <h5>Community</h5>
             <a
-              href="https://twitter.com/warashibemarket"
+              href="https://discord.com/invite/MvSsm8x"
               target="_blank"
               rel="noreferrer noopener"
             >
-              Twitter
+              Discord
             </a>
             <h5 style={{ marginTop: "20px" }}>Contributors</h5>
             {contributors.map(v => (
