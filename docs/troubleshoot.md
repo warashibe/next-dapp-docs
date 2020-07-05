@@ -17,6 +17,12 @@ Plugins can be updated simply by re-adding.
 ```bash
 nextdapp add fb
 ```
+Update the core.
+
+```bash
+nextdapp add core
+```
+
 ---
 
 ## `nextdapp add` hangs

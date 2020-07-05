@@ -36,8 +36,8 @@ export default bind(
     "count2",
     {
       add: [
-        ({ val: { num, target }, props, set }) =>
-          set((props[target] || 0) + num, target),
+        ({ val: { num, target }, get, set }) =>
+          set((get(target) || 0) + num, target),
         ["count1", "count2"]
       ],
       sum: { // this is a Computed Value aka a Recoil Selector
@@ -50,4 +50,5 @@ export default bind(
 )
 ```
 
+> Note that `get` used in computed values is different from `get` used in global functions. Computed values are just [Recoil secectors](https://recoiljs.org/docs/api-reference/core/selector), and you need to pass an `atom` to `get` with recoil selectors. It's a part of Recoil grammar. On the other hand, the `get` used in global functions in Next Dapp is a getter function to access global states where you pass a name of a global state as a String value.
 

@@ -13,9 +13,8 @@ You can insert `Tracker` anywhere in your page components. `Tracker` doesn't ren
   name="count_tracker"
   type="any"
   watch={["count1", "count2"]}
-  props={["count1", "count2"]}
-  func={({ set, props: { count1, count2 } }) => {
-    set(count1 * count2, "product")
+  func={({ set, get }) => {
+    set(get("count1") * get("count2"), "product")
   }}
   />
 ```
@@ -29,8 +28,6 @@ type `all`: the function executes after **all** the specified states changed.
 type `any`: the function executes when **any** one of the specified states changed.
 
 The function defined as `func` is the same as custome functions explained above. You can change any global states using `set`. The function can be `async` and you can change any global states even if they are not bound to the component.
-
-Only the states specified in the `props` array will be passed to the functions as `props`. You may need different states in `watch` and `props`. If `props` is not specified, `props` inherits `watch` and returns the same global states.
 
 The example below watches `count1` and `count2` and whenever either of them changes, it executes a function to calculate the product.
 
@@ -56,9 +53,8 @@ export default bind(
           name="count_tracker"
           type="any"
           watch={["count1", "count2"]}
-          props={["count1", "count2"]}
-          func={({ set, props: { count1, count2 } }) => {
-            set(count1 * count2, "product")
+          func={({ set, get }) => {
+            set(get("count1") * get("count2"), "product")
           }}
         />
       </div>
@@ -69,11 +65,8 @@ export default bind(
     "count2",
     "product",
     {
-      add: [
-        ({ val: { num, target }, props, set }) =>
-          set((props[target] || 0) + num, target),
-        ["count1", "count2"]
-      ]
+      add: ({ val: { num, target }, get, set }) =>
+        set((get(target) || 0) + num, target)
     }
   ]
 )

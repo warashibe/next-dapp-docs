@@ -23,7 +23,7 @@ export default bind(
   },
   [
     {
-      log: ({ global, set, props, conf }) => {
+      log: ({ global, set, get, conf }) => {
         console.log(global.count)
       }
     }

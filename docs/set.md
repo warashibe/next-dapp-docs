@@ -30,12 +30,9 @@ export default bind(
   [
     "state",
     {
-      func: [
-        ({ props, set }) => { // Global Functions will get "set
-		  set((props.state || 0) + 1, "state") // increment "state"
-        },
-        ["state"] // bind Global State
-      ]
+      func: ({ get, set }) => { // Global Functions will get "set
+        set((get("state") || 0) + 1, "state") // increment "state"
+      }
     }
   ]
 )

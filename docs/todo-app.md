@@ -144,20 +144,19 @@ export default bind(
 
 ## Add Todo Global Function
 
-Define `addTodo` global function in `custom.js`. Global functions will automatically get handy arguments such as `set`, `props`, `val`.
+Define `addTodo` global function in `custom.js`. Global functions will automatically get handy arguments such as `set`, `set`, `val`.
 
 `val` : The values passed to the functions will be accessible via `val`.
 
 `set` : can change the value of any global state. `set(new_value, state_name)` is the stardard way, but you can also do `set(object)` to set multiple states at once.
 
-`props` : If you need to access any global states inside the function, you need to pre-bind them as `props` value of the function. This may be a bit odd, but it's valid in Javascript. See below for how it's done. `addTodo.props = ["todos"]` Only the props pre-bound this way can be passed through the `props` argument of the function. We use `Date.now()` to assign an unique key to new tasks.
+`get` : You can access any Global States using `get`. We use `Date.now()` to assign an unique key to new tasks.
 
 ```javascript
 import { findIndex, propEq, append, assocPath } from "ramda"
 
-export const addTodo = ({ props: { todos }, val: { newTask }, set }) =>
-  set(append({ task: newTask, key: Date.now() })(todos), "todos")
-addTodo.props = ["todos"]
+export const addTodo = ({ get, val: { newTask }, set }) =>
+  set(append({ task: newTask, key: Date.now() })(get("todos")), "todos")
 ```
 
 > The Functions you `export` from `/nd/custom.js` will be global functions that can be bound to any component.
@@ -245,11 +244,11 @@ Define `markDone` function in the same way you define `addTodo` in `/nd/custom.j
 ```javascript
 import { findIndex, propEq, append, assocPath } from "ramda"
 
-export const markDone = ({ props: { todos }, val: { todo }, set }) => {
+export const markDone = ({ get, val: { todo }, set }) => {
+  const todos = get("todos")
   const index = findIndex(propEq("key", todo.key))(todos)
   set(assocPath([index, "done"], true)(todos), "todos")
 }
-markDone.props = ["todos"]
 ```
 
 And reflect it in the `TodoUndone` component.
@@ -309,15 +308,14 @@ export default {
 ```javascript
 import { findIndex, propEq, append, assocPath } from "ramda"
 
-export const markDone = ({ props: { todos }, val: { todo }, set }) => {
+export const markDone = ({ get, val: { todo }, set }) => {
+  const todos = get("todos")
   const index = findIndex(propEq("key", todo.key))(todos)
   set(assocPath([index, "done"], true)(todos), "todos")
 }
-markDone.props = ["todos"]
 
-export const addTodo = ({ props: { todos }, val: { newTask }, set }) =>
-  set(append({ task: newTask, key: Date.now() })(todos), "todos")
-addTodo.props = ["todos"]
+export const addTodo = ({ get, val: { newTask }, set }) =>
+  set(append({ task: newTask, key: Date.now() })(get("todos")), "todos")
 ```
 
 ### `/pages/index.js`
