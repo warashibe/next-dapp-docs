@@ -10,6 +10,7 @@ sidebar_label: bind
 
 `Array_of_things_to_bind` can be any number of [Global States](/next-dapp/docs/global-states), [Global Functions](/next-dapp/docs/global-functions) and [Computed Values](/next-dapp/docs/computed-values) in any aubitrary order. You can also omit this second argument if there is nothing to bind.
 
+![](/next-dapp/img/diagram-1.png)
 
 ## bind `Global States`
 
