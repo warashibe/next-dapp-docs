@@ -62,10 +62,9 @@ export const init = {
 You can also export [global functions](/next-dapp/docs/global-functions) for your plugin from `index.js`.
 
 ```javascript
-export const myfunc = ({ props: { my_state_1, my_state_2 }, set }) => {
-  set(my_state_1 + my_state_2, "my_state_3")
+export const myfunc = ({ get, set }) => {
+  set(get("my_state_1") + get("my_state_2"), "my_state_3")
 }
-myfunc.props = ["my_state_1", "my_state_2"]
 ```
 
 > You don't have to define everything in `index.js`. Use other files and export things into `index.js`, then export those from `index.js`. See how other plugins chain up `export` into `index.js` for your reference.
@@ -173,9 +172,8 @@ First instantiate the wrapper with the plugin name. Then wrap all the state name
 import {ns} from "nd"
 const $ = ns("myplugin")
 
-export const myfunc = ({ props, set }) => {
-  set(props[$("my_state_1")] + props[$("my_state_2")], $("my_state_3"))
+export const myfunc = ({ get, set }) => {
+  set(get($("my_state_1")) + get($("my_state_2")), $("my_state_3"))
 }
-myfunc.props = [$("my_state_1"), $("my_state_2")]
 ```
 > As long as you plan to use your plugins privately, you may not need to worry about namespaces and wrap everything with `ns / $`.

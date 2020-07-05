@@ -271,8 +271,8 @@ export default bind(
   name="state_tracker"
   watch={["stateA", "stateB"]}
   type="any"
-  func={({ set, props: { stateA, stateB } }) => {
-    set(stateA * stateB, "product")
+  func={({ set, get }) => {
+    set(get("stateA") * get("stateB"), "product")
   }}
   />`
     const bind_code = `import { bind } from "nd"
@@ -289,9 +289,9 @@ export default bind(
         set(3, "global_state")
       },
       computed_value: {
-        get: ({ global_state, global_state2 }) => ({ get }) => {
-          return get(global_state)) + get(global_state2)
-        }
+        get: ({ global_state, global_state2 }) => ({ get }) =>
+          get(global_state)) + get(global_state2)
+        
       }
     }
   ]

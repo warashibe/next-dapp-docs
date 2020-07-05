@@ -145,8 +145,9 @@ export default bind(
         <Tracker
           name="fb"
           watch={["isFB", "user"]} // watch isFb and something else		  
-          func={async ({ props: { isFB, user }, global: { db, fb } }) => {
-            if (isFB && user !== null){ // check if isFB is true
+          func={async ({ get, global: { db, fb } }) => {
+		    const user = get("user")
+            if (get("isFB") && user !== null){ // check if isFB is true
               await db.set({ count: db.inc(1) }, "users", user.uid)
 			}
           }}

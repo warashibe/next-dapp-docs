@@ -74,19 +74,18 @@ export default bind(
 )
 ```
 
-You can also pass undefined functions as a part of an object. There are 2 ways to bind `Global States` to `Global Functions` as shown below. `func2` binds `state` by adding `random_func.props` Array. `func3` binds `state` by giving Array value `[ function, props ]`. If you bind `Global States` in either way, you can access them via `props` inside the `Global Function`.
+You can also pass undefined functions as a part of an object.  You can use `get` to access any defined global states.
 
 ```javascript
 import { bind } from "nd"
 
-const random_func = ({props}) => { // Global Functions will get "props"
-  console.log(props.state) // access Globlal State via props
+const random_func = ({ get }) => { /* Global Functions will have "get" */
+  console.log(get("state")) /* access Globlal State with get */
 }
-random_func.props = ["state"] // bind Global State
 
 export default bind(
   ({ init }) => {
-    const fn = init() // initialize Global Functions
+    const fn = init() /* initialize Global Functions */
     return (
       <div>
         <div onClick={fn.func1}>execute func1</div>
@@ -96,15 +95,12 @@ export default bind(
     )
   },
   [
-    "func1", // predefined function in "/nd/custom.js"
+    "func1", /* predefined function in "/nd/custom.js" */
     {
       func2: random_func,
-      func3: [
-        ({ props }) => { // Global Functions will get "props"
-          console.log(props.state) // access Globlal State via props
-        },
-        ["state"] // bind Global State
-      ]
+      func3: ({ get }) => { /* Global Functions will get "get" */
+          console.log(get("state")) /* access Globlal State with get */
+      }		  
     }
   ]
 )
@@ -156,12 +152,9 @@ export default bind(
       sum: atoms => ({ get }) => {
         return get(atoms.num1) + get(atoms.num2)
       },
-      func: [
-        ({ props }) => {
-          console.log(props.sum)
-        },
-        ["sum"]
-      ]
+      func: ({ get }) => {
+        console.log(get("sum"))
+	  }
     },
     "num3",
     "num4"

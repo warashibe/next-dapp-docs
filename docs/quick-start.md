@@ -164,7 +164,7 @@ export default {
 
 You can also bind functions.
 
-To access global states  via `props` inside the function, you need to pass the names of the states as the second argument.  
+To access global states inside the function, use `get`. 
 
 The functions need to be initialized inside the component with `init()`.
 
@@ -185,10 +185,7 @@ export default bind(
   [
     "count",
     {
-      add: [
-        ({ val, props, set }) => set((props.count || 0) + val, "count"),
-        ["count"]
-      ]
+      add: ({ val, get, set }) => set((get("count") || 0) + val, "count")
     }
   ]
 )
@@ -199,9 +196,8 @@ export default bind(
 Globally shared functions can be predefined in `/nd/custom.js`. Export as many as you like.
 
 ```javascript
-export const add = ({ val, props, set }) =>
-  set((props.count || 0) + val, "count")
-add.props = ["count"]
+export const add = ({ val, get, set }) =>
+  set((get("count") || 0) + val, "count")
 ```
 
 Pass the predefined function name as a String value. `bind` is smart enough to know which are `states` and which are `functions`.
@@ -239,11 +235,6 @@ If you install `react@expoerimental` and `react-dom@experimental`, you can even 
 
 
 ```javascript
-import { bind } from "nd"
-
-const Counter = bind(({ count1 }) => <span>{count1 || 0}</span>, ["count1"])
-const Counter2 = bind(({ count2 }) => <span>{count2 || 0}</span>, ["count2"])
-
 export default bind(
   ({ set, sum, init }) => {
     const fn = init()
@@ -263,15 +254,11 @@ export default bind(
     "count1",
     "count2",
     {
-      add: [
-        ({ val: { num, target }, props, set }) =>
-          set((props[target] || 0) + num, target),
-        ["count1", "count2"]
-      ],
+      add: ({ val: { num, target }, get, set }) =>
+        set((get(target) || 0) + num, target),
       sum: {
-        get: atoms => ({ get }) => {
-          return (get(atoms.count1) || 0) + (get(atoms.count2) || 0)
-        }
+        get: atoms => ({ get }) =>
+          (get(atoms.count1) || 0) + (get(atoms.count2) || 0)
       }
     }
   ]
@@ -293,9 +280,8 @@ You can insert `Tracker` anywhere in your page components. `Tracker` doesn't ren
   name="count_tracker"
   type="any"
   watch={["count1", "count2"]}
-  props={["count1", "count2"]}
-  func={({ set, props: { count1, count2 } }) => {
-    set(count1 * count2, "product")
+  func={({ set, get }) => {
+    set(get("count1") * get("count2"), "product")
   }}
   />
 ```
@@ -309,8 +295,6 @@ type `all`: the function executes after **all** the specified states changed.
 type `any`: the function executes when **any** one of the specified states changed.
 
 The function defined as `func` is the same as custome functions explained above. You can change any global states using `set`. The function can be `async` and you can change any global states even if they are not bound to the component.
-
-Only the states specified in the `props` array will be passed to the functions as `props`. You may need different states in `watch` and `props`. If `props` is not specified, `props` inherits `watch` and returns the same global states.
 
 ```javascript
 import { bind, Tracker } from "nd"
@@ -335,9 +319,8 @@ export default bind(
           name="count_tracker"
           type="any"
           watch={["count1", "count2"]}
-          props={["count1", "count2"]}
-          func={({ set, props: { count1, count2 } }) => {
-            set(count1 * count2, "product")
+          func={({ set, get }) => {
+            set(get("count1") * get("count2"), "product")
           }}
         />
       </div>
@@ -348,11 +331,8 @@ export default bind(
     "count2",
     "product",
     {
-      add: [
-        ({ val: { num, target }, props, set }) =>
-          set((props[target] || 0) + num, target),
-        ["count1", "count2"]
-      ],
+      add: ({ val: { num, target }, get, set }) =>
+        set((get(target) || 0) + num, target),
       sum: {
         get: atoms => ({ get }) => {
           return (get(atoms.count1) || 0) + (get(atoms.count2) || 0)

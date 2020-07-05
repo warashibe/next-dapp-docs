@@ -4,7 +4,7 @@ title: Wallet App Example
 sidebar_label: Wallet App Example
 ---
 
-We will create a very simple crypto wallet app using `web3` plugin. It works on Ropsten Testnet and the wallet will only handle [**WJPY**](https://testnet-wjpy.warashibe.market/) ERC20 stable token. You should be familiar with the [**basic concept of Next Dapp**](/next-dapp/docs/quick-start). We heavily use the simple and easy [**web3 plugin**](http://localhost:3000/next-dapp/docs/plugin-web3), so refer to it throughout this tutorial.
+We will create a very simple crypto wallet app using `web3` plugin. It works on Ropsten Testnet and the wallet will only handle [**WJPY**](https://testnet-wjpy.warashibe.market/) ERC20 stable token. You should be familiar with the [**basic concept of Next Dapp**](/next-dapp/docs/quick-start). We heavily use the simple and easy [**web3 plugin**](/next-dapp/docs/plugin-web3), so refer to it throughout this tutorial.
 
 Also connect Metamask to [Ropsten Testnet](https://ropsten.etherscan.io/) during development.
 
@@ -110,9 +110,9 @@ A simple `Tracker` that watches `web3_address` and `web3_updatede`, then set a n
 <Tracker
   name="getBalance"
   watch={["web3_address", "web3_updated"]}
-  func={async ({ props: { web3_address }, set }) => {
+  func={async ({ get, set }) => {
     const token = erc20({ token: "WJPY" })
-    set(fromWei(await token.balanceOf(web3_address)), "balance")
+    set(fromWei(await token.balanceOf(get("web3_address"))), "balance")
   }}
   />
 ```
@@ -138,9 +138,9 @@ export default bind(
         <Tracker
           name="getBalance"
           watch={["web3_address", "web3_updated"]}
-          func={async ({ props: { web3_address }, set }) => {
+          func={async ({ get, set }) => {
             const token = erc20({ token: "WJPY" })
-            set(fromWei(await token.balanceOf(web3_address)), "balance")
+            set(fromWei(await token.balanceOf(get("web3_address"))), "balance")
           }}
         />
       </div>
@@ -392,9 +392,9 @@ export default bind(
         <Tracker
           name="getBalance"
           watch={["web3_address", "web3_updated"]}
-          func={async ({ props: { web3_address }, set }) => {
+          func={async ({ get, set }) => {
             const token = erc20({ token: "WJPY" })
-            set(fromWei(await token.balanceOf(web3_address)), "balance")
+            set(fromWei(await token.balanceOf(get("web3_address"))), "balance")
           }}
         />
       </div>
