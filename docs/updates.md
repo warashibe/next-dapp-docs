@@ -25,9 +25,9 @@ nextdapp add core
 
 ## Updates
 
-### 2020.07.05 [web3 v0.0.5]
+### 2020.07.05 [web3 v0.0.6]
 
-* add `eth` instance with `getBalance` and `transfer` method.
+* add `eth` instance with `getBalance`, `balanceOf`, `sendTransaction` and `transfer` methods.
 
 Sett the [web3 plugin](/next-dapp/docs/plugin-web3#eth) page for details.
 

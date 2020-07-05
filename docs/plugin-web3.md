@@ -102,20 +102,23 @@ This function needs to be executed once to detect `web3.js` and connect with an 
 
 `getBalance(address)` : get the balance of `address`. If `address` is omitted, it will be `web3_address`.
 
+`balanceOf(address)` : an alias for `getBalance`
+
 #### ETH transaction methods
 
-`transfer({ to, value })` : transfer `value` ETH to `to` address
+`transfer( to, value)` : transfer `value` ETH to `to` address
+
+`sendTransaction({ to, value })` : transfer `value` ETH to `to` address. It's the same as `transfer` but in the web3.js grammar.
 
 ```javascript
 const ether = eth()
 const to = "0xxxxxx..."
 
 // balance
-console.log(fromWei(await ether.getBalance()))
+console.log(fromWei(await ether.balanceOf()))
 
 // transfer
-const [err, receipt] = await ether.transfer({ to, value: toWei("1") })
-
+const [err, receipt] = await ether.transfer(to, toWei("1"))
 ```
 
 ### `erc20({ address, token })`
