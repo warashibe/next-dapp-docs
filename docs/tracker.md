@@ -6,6 +6,8 @@ sidebar_label: Tracker
 
 By inserting `Tracker` anywhere in your component, you can watch global states (Recoil atoms/selectors) and reactively execute a function when watching states change. This isn't easy to do without external state management libraries and complex setups, but Next Dapp makes it a breeze out of the box.
 
+![](/next-dapp/img/diagram-2.png)
+
 You can insert `Tracker` anywhere in your page components. `Tracker` doesn't render anything to the UI.
 
 ```javascript

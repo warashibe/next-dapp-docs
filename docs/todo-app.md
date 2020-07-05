@@ -6,6 +6,8 @@ sidebar_label: Todo App Example
 
 We will create a very simple todo app using Next Dapp global states. We use [Ramda](https://ramdajs.com) throughout the app for concise data manipulations. Hopefully, it's clear and easy enough to understand even if you don't know Ramda.
 
+![](/next-dapp/img/todo-app-5.png)
+
 ## Create an App and Run Locally
 
 ```
@@ -79,9 +81,10 @@ const style = {
 
 You can bind any global states to a react Component with `bind`. Just pass the name of the global states as the second argument as shown below. If you pass a name of a non-defined state, a new global state will be created on the fly. However, use `/nd/init.js` to define it whenever possible so you can give it a initial value.
 
+![](/next-dapp/img/todo-app-1.png)
+
 ```javascript
 import { bind } from "nd"
-import { map } from "ramda"
 
 export default bind(
   ({ todos }) => (
@@ -96,6 +99,8 @@ export default bind(
 ## A New Task `input` form
 
 The app should be able to add new tasks. Define an `input` and a `button` to add new tasks. For this, we only use a react local `state` since the input value is only accessed locally within the component. This is a standard react way to use `input` form. We also check if the input value is blank with `isBlank`. Leave the acutual part to add a task blank for now. We will fill the `/* add task to the todo list */` part soon. Right now if you click the `Add` button, it resets the `input` form with `setNewTask`.
+
+![](/next-dapp/img/todo-app-2.png)
 
 ```javascript
 import { useState } from "react"
@@ -166,6 +171,8 @@ Now bind the `addTodo` function to the `NewTask` component by just passing the n
 
 See the line `const fn = init()`.
 
+![](/next-dapp/img/todo-app-3.png)
+
 ```javascript
 const NewTask = bind(
   ({ init }) => {
@@ -202,6 +209,8 @@ const NewTask = bind(
 
 Let's defined a Component for each todo item. We need two sub Components to show done/undone tasks. Make a `Done` button and define a `onClick` function which marks a task `Done`. Leave the function blank for now.
 
+![](/next-dapp/img/todo-app-4.png)
+
 ```javascript
 const TodoDone = ({ todo }) => (
   <div style={style.todo}>
@@ -230,7 +239,10 @@ const Todo = ({ todo, todos }) =>
 export default bind(
   ({ todos }) => (
     <div style={style.container}>
-      <div style={style.todos}>{map(v => <Todo todo={v} />)(todos)}</div>
+      <div style={style.todos}>
+        <NewTask />
+        {map(v => <Todo todo={v} />)(todos)}
+      </div>
     </div>
   ),
   ["todos"]
@@ -242,8 +254,6 @@ export default bind(
 Define `markDone` function in the same way you define `addTodo` in `/nd/custom.js`.
 
 ```javascript
-import { findIndex, propEq, append, assocPath } from "ramda"
-
 export const markDone = ({ get, val: { todo }, set }) => {
   const todos = get("todos")
   const index = findIndex(propEq("key", todo.key))(todos)
@@ -290,6 +300,8 @@ export default bind(
 ```
 
 And that's it. You have created your first nDapp with Next Dapp!
+
+![](/next-dapp/img/todo-app-5.png)
 
 ## The Complete Code
 
