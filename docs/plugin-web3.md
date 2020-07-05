@@ -119,7 +119,6 @@ console.log(fromWei(await ether.balanceOf()))
 
 // transfer
 const [err, receipt] = await ether.transfer(to, toWei("1"))
-
 ```
 
 ### `erc20({ address, token })`
