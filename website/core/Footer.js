@@ -62,6 +62,7 @@ class Footer extends React.Component {
             <a href={this.docUrl("todo-app")}>Todo App Example</a>
             <a href={this.docUrl("nextdapp-cli")}>API Reference</a>
             <a href={this.docUrl("troubleshoot")}>Troubleshooting</a>
+            <a href={this.docUrl("updates")}>Updates</a>
           </div>
           <div>
             <h5>Community</h5>

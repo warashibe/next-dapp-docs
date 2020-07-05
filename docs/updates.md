@@ -25,7 +25,13 @@ nextdapp add core
 
 ## Updates
 
-### 2020.07.05 [Core]
+### 2020.07.05 [web3 v0.0.5]
+
+* add `eth` instance with `getBalance` and `transfer` method.
+
+Sett the [web3 plugin](/next-dapp/docs/plugin-web3#eth) page for details.
+
+### 2020.07.05 [core v0.0.7]
 
 * global functions are now chainable. 
 * deprecate `props` (still works as a snapshot) and introduce `get` to access any global states.

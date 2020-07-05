@@ -94,6 +94,30 @@ This function needs to be executed once to detect `web3.js` and connect with an 
 
 `useEffect(() => { initWeb3() }, [])`
 
+### `eth()`
+
+`eth` has two methods to deal with Ethereum native token `ether`.
+
+#### ETH constant methods
+
+`getBalance(address)` : get the balance of `address`. If `address` is omitted, it will be `web3_address`.
+
+#### ETH transaction methods
+
+`transfer({ to, value })` : transfer `value` ETH to `to` address
+
+```javascript
+const ether = eth()
+const to = "0xxxxxx..."
+
+// balance
+console.log(fromWei(await ether.getBalance()))
+
+// transfer
+const [err, receipt] = await ether.transfer({ to, value: toWei("1") })
+
+```
+
 ### `erc20({ address, token })`
 
 This is a handy way to make transactions to ERC20 contracts. You can either pass `address` of the token or predefined token name such as `ALIS`. Once you get the contract instance, you can execute any methods defined in the erc20 abi in consice grammar.
@@ -103,7 +127,7 @@ const token = erc20({token : "ALIS"})
 const my_address = "0xxxxxx..."
 
 // constant method
-console.log(await token.getBalance(my_address))
+console.log(await token.balanceOf(my_address))
 
 // transaction method
 const [err, receipt] = await token.approve(my_address, 100)
