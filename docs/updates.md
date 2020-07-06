@@ -25,6 +25,12 @@ nextdapp add core
 
 ## Updates
 
+### 2020.07.06 [core v0.0.8]
+
+* `Tracker` name is now optional.
+
+Sett the [Tracker](/next-dapp/docs/tracker) page for details.
+
 ### 2020.07.05 [web3 v0.0.6]
 
 * add `eth` instance with `getBalance`, `balanceOf`, `sendTransaction` and `transfer` methods.
