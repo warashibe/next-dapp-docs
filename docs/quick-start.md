@@ -288,7 +288,9 @@ You can insert `Tracker` anywhere in your page components. `Tracker` doesn't ren
   />
 ```
 
-A tracker `name`, `func` and `watch` are required.
+A tracker `func` and `watch` are required.
+
+`name` is optional but if you want to overwrite a previous `Tracker`, use the same name.
 
 You can `watch` state changes in two ways.
 
