@@ -113,25 +113,25 @@ Delete the user account. Pass the `uid` from `user` object. It deletes the accou
 import { useEffect } from "react"
 import { bind } from "nd"
 export default bind(
-  ({ user, user_init, init }) => {
-    const { initFB, watchUser, login, logout, deleteAccount } = init()
-    useEffect(() => { watchUser() }, [])
+  ({ $, init }) => {
+    const fn = init([ "initFB", "watchUser", "login", "logout", "deleteAccount" ])
+    useEffect(() => { fn.watchUser() }, [])
     return (
       <div>
-        {user_init === false ? (
+        {$.user_init === false ? (
           "loading..."
-        ) : user === null ? (
-          <div onClick={() => login({ provider: "twitter" })}>login</div>
+        ) : $.user === null ? (
+          <div onClick={() => fn.login({ provider: "twitter" })}>login</div>
         ) : (
           <div>
-		    <div>Hello, {user.name}!</div>
-            <div onClick={logout}>logout</div>
-            <div onClick={() => deleteAccount({ uid: user.uid })}>delete</div>
+		    <div>Hello, {$.user.name}!</div>
+            <div onClick={fn.logout}>logout</div>
+            <div onClick={() => fn.deleteAccount({ uid: $.user.uid })}>delete</div>
           </div>
         )}
       </div>
     )
   },
-  ["user", "user_init", "initFB", "watchUser", "deleteAccount"]
+  ["user", "user_init"]
 )
 ```

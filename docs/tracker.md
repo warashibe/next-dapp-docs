@@ -23,7 +23,7 @@ You can insert `Tracker` anywhere in your page components. `Tracker` doesn't ren
 
 A tracker `func` and `watch` are required.
 
-`name` is optional but if you want to overwrite a previous `Tracker`, use the same name. If `name` is not given, md5 of the parameters are used to generate a unique name.
+`name` is optional but if you want to overwrite a previous `Tracker`, use the same name. If `name` is not given, md5 of the parameters is used to generate a unique name.
 
 You can `watch` state changes in two ways.
 

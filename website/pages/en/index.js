@@ -170,15 +170,14 @@ import { bind } from "nd"
 
 export default bind(
   ({ init }) => {
-    const { initFB } = init()
+    const fn = init([ "initFB" ])
     useEffect(() => {
-      initFB().then(async ({ db }) => {
+      fn.initFB().then(async ({ db }) => {
         console.log(await db.get("users"))
       })
     }, [])
     return <div>initFB</div>
-  },
-  ["initFB"]
+  }
 )
 `
                 ).value

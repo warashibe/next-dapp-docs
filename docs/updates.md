@@ -25,6 +25,13 @@ nextdapp add core
 
 ## Updates
 
+### 2020.07.06 [core v0.0.12]
+
+* global states are accessible via `$`.
+* global functions can be initialized via `init([ "function_name1", "function_name2" ])`.
+
+Sett the [bind](/next-dapp/docs/bind) page for details.
+
 ### 2020.07.06 [core v0.0.8]
 
 * `Tracker` name is now optional.
