@@ -28,6 +28,20 @@ export default bind(
 
 Global States are ideally predefined in `/nd/init.js`. But you can also use undefined state names. Undefined states will be initially set `null`.
 
+Another way to use Global State is via `$`.
+
+```javascript
+import { bind } from "nd"
+
+export default bind(
+  ({ $ }) => (
+    <div>{$.state1} : {$.state2} : {$.state3}</div>
+  ),
+  ["state1", "state2", "state3"]
+)
+
+```
+
 Next Dapp utilizes [Recoil Atoms](https://recoiljs.org/docs/basic-tutorial/atoms) under the hood to create globally reactive and persistant states. Unlike React's local component states, other components which are bound to these states will be rerendered when states are changed by [set](/next-dapp/docs/set).
 
 ```javascript
@@ -63,7 +77,26 @@ import { bind } from "nd"
 
 export default bind(
   ({ init }) => { // bound comoponents always get "init"
-    const fn = init() // initialize the bound functions
+    const { func1, func2 } = init() // bind and initialize functions
+	return (
+      <div>
+        <div onClick={func1}>execute func1</div>
+        <div onClick={func2}>execute func2</div>
+      </div>
+    )
+  },
+  ["func1", "func2"]
+)
+```
+
+You can also initialize Global Functions via `init(["function_name1","function_name2"])`.
+
+```javascript
+import { bind } from "nd"
+
+export default bind(
+  ({ init }) => { // bound comoponents always get "init"
+    const fn = init([ "func1", "func2" ]) // initialize the bound functions
 	return (
       <div>
         <div onClick={fn.func1}>execute func1</div>
@@ -71,7 +104,7 @@ export default bind(
       </div>
     )
   },
-  ["func1", "func2"]
+  []
 )
 ```
 
